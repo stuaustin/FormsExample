@@ -17,7 +17,6 @@
 		F68378BB2375C01D00371B1A /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68378BA2375C01D00371B1A /* LoginView.swift */; };
 		F68378BD2375C11100371B1A /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68378BC2375C11100371B1A /* RegisterView.swift */; };
 		F68378BF2375C21600371B1A /* CheckboxItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68378BE2375C21600371B1A /* CheckboxItemView.swift */; };
-		F68378C12375C26F00371B1A /* LayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68378C02375C26F00371B1A /* LayerView.swift */; };
 		F68378C52375CA4F00371B1A /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68378C42375CA4F00371B1A /* LoginViewModel.swift */; };
 		F68378C72375CCBB00371B1A /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68378C62375CCBB00371B1A /* UIImage+Extensions.swift */; };
 		F68378C92375D0C800371B1A /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68378C82375D0C800371B1A /* RootCoordinator.swift */; };
@@ -37,7 +36,6 @@
 		F68378BA2375C01D00371B1A /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		F68378BC2375C11100371B1A /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		F68378BE2375C21600371B1A /* CheckboxItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxItemView.swift; sourceTree = "<group>"; };
-		F68378C02375C26F00371B1A /* LayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerView.swift; sourceTree = "<group>"; };
 		F68378C42375CA4F00371B1A /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		F68378C62375CCBB00371B1A /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
 		F68378C82375D0C800371B1A /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
@@ -88,7 +86,6 @@
 				F68378B42375ACCD00371B1A /* ScrollViewKeyboardHandler.swift */,
 				F68378B62375B23000371B1A /* FormItemView.swift */,
 				F68378BE2375C21600371B1A /* CheckboxItemView.swift */,
-				F68378C02375C26F00371B1A /* LayerView.swift */,
 				F68378C62375CCBB00371B1A /* UIImage+Extensions.swift */,
 			);
 			path = FormsExample;
@@ -173,7 +170,6 @@
 				F68378BD2375C11100371B1A /* RegisterView.swift in Sources */,
 				F68378562375A7F400371B1A /* LoginViewController.swift in Sources */,
 				F68378CB2375D22E00371B1A /* RegisterViewModel.swift in Sources */,
-				F68378C12375C26F00371B1A /* LayerView.swift in Sources */,
 				F68378542375A7F400371B1A /* AppDelegate.swift in Sources */,
 				F68378C52375CA4F00371B1A /* LoginViewModel.swift in Sources */,
 				F68378B72375B23000371B1A /* FormItemView.swift in Sources */,
