@@ -162,3 +162,22 @@ final class LoginView: UIView {
             ])
     }
 }
+
+#if canImport(SwiftUI) && DEBUG
+import SwiftUI
+
+@available(iOS 13.0, *)
+struct LoginView_Preview: PreviewProvider, UIViewRepresentable {
+    typealias UIViewType = LoginView
+
+    func makeUIView(context: UIViewRepresentableContext<LoginView_Preview>) -> LoginView {
+        return LoginView(frame: UIScreen.main.bounds)
+    }
+
+    func updateUIView(_ uiView: LoginView, context: UIViewRepresentableContext<LoginView_Preview>) {}
+
+    static var previews: some View {
+        LoginView_Preview()
+    }
+}
+#endif

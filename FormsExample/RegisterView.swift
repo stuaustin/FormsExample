@@ -159,3 +159,22 @@ final class RegisterView: UIView {
             ])
     }
 }
+
+#if canImport(SwiftUI) && DEBUG
+import SwiftUI
+
+@available(iOS 13.0, *)
+struct RegisterView_Preview: PreviewProvider, UIViewRepresentable {
+    typealias UIViewType = RegisterView
+
+    func makeUIView(context: UIViewRepresentableContext<RegisterView_Preview>) -> RegisterView {
+        return RegisterView(frame: UIScreen.main.bounds)
+    }
+
+    func updateUIView(_ uiView: RegisterView, context: UIViewRepresentableContext<RegisterView_Preview>) {}
+
+    static var previews: some View {
+        RegisterView_Preview()
+    }
+}
+#endif
