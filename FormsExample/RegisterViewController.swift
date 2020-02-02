@@ -23,12 +23,16 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 final class RegisterViewController: UIViewController {
 
     let viewModel: RegisterViewModel
 
     private lazy var registerView = RegisterView(frame: UIScreen.main.bounds)
+
+    private let disposeBag = DisposeBag()
 
     // MARK: - Notifications
 
@@ -39,7 +43,6 @@ final class RegisterViewController: UIViewController {
     init(viewModel: RegisterViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
-        viewModel.delegate = self
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -58,46 +61,31 @@ final class RegisterViewController: UIViewController {
         title = "Create Account"
         keyboardHandler.scrollView = registerView.scrollView
 
-        registerView.firstNameItem.textField.addTarget(self, action: #selector(textFieldEditingChanged), for: .editingChanged)
-        registerView.lastNameItem.textField.addTarget(self, action: #selector(textFieldEditingChanged), for: .editingChanged)
-        registerView.emailItem.textField.addTarget(self, action: #selector(textFieldEditingChanged), for: .editingChanged)
-        registerView.passwordItem.textField.addTarget(self, action: #selector(textFieldEditingChanged), for: .editingChanged)
-
-        registerView.termsItem.addTarget(self, action: #selector(checkboxItemValueChanged(sender:)), for: .valueChanged)
-        registerView.privacyItem.addTarget(self, action: #selector(checkboxItemValueChanged(sender:)), for: .valueChanged)
-
-        registerView.createAccountButton.isEnabled = viewModel.isRegisterButtonEnabled
-    }
-}
-
-// MARK: - UIControl events
-
-extension RegisterViewController {
-    @objc private func textFieldEditingChanged(sender: UITextField) {
-        if sender === registerView.firstNameItem.textField {
-            viewModel.formInformation.firstName = sender.text ?? ""
-        } else if sender === registerView.lastNameItem.textField {
-            viewModel.formInformation.lastName = sender.text ?? ""
-        } else if sender === registerView.emailItem.textField {
-            viewModel.formInformation.email = sender.text ?? ""
-        } else if sender === registerView.passwordItem.textField {
-            viewModel.formInformation.password = sender.text ?? ""
-        }
+        bindUI()
     }
 
-    @objc private func checkboxItemValueChanged(sender: CheckboxItemView) {
-        if sender == registerView.termsItem {
-            viewModel.formInformation.acceptTerms = sender.isSelected
-        } else if sender == registerView.privacyItem {
-            viewModel.formInformation.acceptPrivacy = sender.isSelected
-        }
-    }
-}
+    private func bindUI() {
+        disposeBag.insert(
+            // Bind the ViewModel state to the UI
+            viewModel.firstName.bind(to: registerView.firstNameItem.textField.rx.text),
+            viewModel.lastName.bind(to: registerView.lastNameItem.textField.rx.text),
+            viewModel.email.bind(to: registerView.emailItem.textField.rx.text),
+            viewModel.password.bind(to: registerView.passwordItem.textField.rx.text),
+            viewModel.acceptTerms.bind(to: registerView.termsItem.rx.isSelected),
+            viewModel.acceptPrivacy.bind(to: registerView.privacyItem.rx.isSelected),
+            viewModel.isRegisterButtonEnabled.drive(registerView.createAccountButton.rx.isEnabled),
 
-// MARK: - RegisterViewModelDelegate
-
-extension RegisterViewController: RegisterViewModelDelegate {
-    func isRegisterButtonEnabledDidChange() {
-        registerView.createAccountButton.isEnabled = viewModel.isRegisterButtonEnabled
+            // Bind the UI to the ViewModel
+            registerView.firstNameItem.textField.rx.text.orEmpty.bind(to: viewModel.firstName),
+            registerView.lastNameItem.textField.rx.text.orEmpty.bind(to: viewModel.lastName),
+            registerView.emailItem.textField.rx.text.orEmpty.bind(to: viewModel.email),
+            registerView.passwordItem.textField.rx.text.orEmpty.bind(to: viewModel.password),
+            registerView.termsItem.rx.controlEvent(.valueChanged).map { [unowned termsItem = registerView.termsItem] in
+                termsItem.isSelected
+            }.bind(to: viewModel.acceptTerms),
+            registerView.privacyItem.rx.controlEvent(.valueChanged).map { [unowned privacyItem = registerView.privacyItem] in
+                privacyItem.isSelected
+            }.bind(to: viewModel.acceptPrivacy)
+        )
     }
 }

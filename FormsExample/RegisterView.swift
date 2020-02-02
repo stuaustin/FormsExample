@@ -88,14 +88,14 @@ final class RegisterView: UIView {
         return passwordItem
     }()
 
-    let termsItem: CheckboxItemView = {
-        let termsItem = CheckboxItemView()
+    let termsItem: CheckboxItemButton = {
+        let termsItem = CheckboxItemButton()
         termsItem.textLabel.text = "I accept the Terms & Conditions"
         return termsItem
     }()
 
-    let privacyItem: CheckboxItemView = {
-        let privacyItem = CheckboxItemView()
+    let privacyItem: CheckboxItemButton = {
+        let privacyItem = CheckboxItemButton()
         privacyItem.textLabel.text = "I accept the Privacy & Cookie Policy"
         return privacyItem
     }()

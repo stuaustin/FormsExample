@@ -1,5 +1,5 @@
 //
-//  CheckboxItemView.swift
+//  CheckboxItemButton.swift
 //
 //  Copyright (c) 2019 Stuart Austin
 //
@@ -24,17 +24,19 @@
 
 import UIKit
 
-final class CheckboxItemView: UIControl {
+final class CheckboxItemButton: UIButton {
 
     let outerBoxView: UIView = {
         let outerView = UIView()
         outerView.backgroundColor = UIColor.groupTableViewBackground
+        outerView.isUserInteractionEnabled = false
         return outerView
     }()
 
     let innerBoxView: UIView = {
         let innerBoxView = UIView()
         innerBoxView.backgroundColor = innerBoxView.tintColor
+        innerBoxView.isUserInteractionEnabled = false
         return innerBoxView
     }()
 
@@ -84,16 +86,13 @@ final class CheckboxItemView: UIControl {
             textLabel.leadingAnchor.constraint(equalTo: outerBoxView.trailingAnchor, constant: 5),
             textLabel.topAnchor.constraint(greaterThanOrEqualTo: topAnchor, constant: 5),
             textLabel.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -5),
-            textLabel.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor)
+            textLabel.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor),
+            textLabel.centerYAnchor.constraint(equalTo: centerYAnchor)
             ])
 
         isSelectedDidChange()
-    }
 
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesEnded(touches, with: event)
-        isSelected.toggle()
-        sendActions(for: .valueChanged)
+        addTarget(self, action: #selector(touchUpInsideEvent), for: .touchUpInside)
     }
 
     override var isSelected: Bool {
@@ -108,5 +107,10 @@ final class CheckboxItemView: UIControl {
 
     private func isSelectedDidChange() {
         innerBoxView.isHidden = !isSelected
+    }
+
+    @objc private func touchUpInsideEvent() {
+        isSelected.toggle()
+        sendActions(for: .valueChanged)
     }
 }

@@ -23,6 +23,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 protocol LoginViewControllerDelegate: class {
     func showRegisterController()
@@ -36,6 +38,8 @@ final class LoginViewController: UIViewController {
 
     weak var delegate: LoginViewControllerDelegate?
 
+    private let disposeBag = DisposeBag()
+
     // MARK: - Notifications
 
     private let keyboardHandler = ScrollViewKeyboardHandler()
@@ -45,7 +49,6 @@ final class LoginViewController: UIViewController {
     init(viewModel: LoginViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
-        viewModel.delegate = self
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -64,41 +67,31 @@ final class LoginViewController: UIViewController {
         title = "Login"
         keyboardHandler.scrollView = loginView.scrollView
 
-        loginView.emailItem.textField.addTarget(self, action: #selector(textFieldEditingChanged), for: .editingChanged)
-        loginView.passwordItem.textField.addTarget(self, action: #selector(textFieldEditingChanged), for: .editingChanged)
-        loginView.rememberItem.addTarget(self, action: #selector(rememberItemValueChanged(sender:)), for: .valueChanged)
-
-        loginView.loginButton.isEnabled = viewModel.isLoginButtonEnabled
         loginView.createAccountButton.addTarget(self, action: #selector(registerButtonWasPressed), for: .touchUpInside)
+
+        bindUI()
+    }
+
+    private func bindUI() {
+        disposeBag.insert(
+            // Bind the ViewModel state to the UI
+            viewModel.email.bind(to: loginView.emailItem.textField.rx.text),
+            viewModel.password.bind(to: loginView.passwordItem.textField.rx.text),
+            viewModel.rememberEmail.bind(to: loginView.rememberItem.rx.isSelected),
+            viewModel.isLoginButtonEnabled.drive(loginView.loginButton.rx.isEnabled),
+
+            // Bind the UI to the ViewModel
+            loginView.emailItem.textField.rx.text.orEmpty.bind(to: viewModel.email),
+            loginView.passwordItem.textField.rx.text.orEmpty.bind(to: viewModel.password),
+            loginView.rememberItem.rx.controlEvent(.valueChanged).map { [unowned rememberItem = loginView.rememberItem] in
+                rememberItem.isSelected
+            }.bind(to: viewModel.rememberEmail)
+        )
     }
 
     // MARK: - Button Actions
 
     @objc private func registerButtonWasPressed() {
         delegate?.showRegisterController()
-    }
-}
-
-// MARK: - UIControl events
-
-extension LoginViewController {
-    @objc private func textFieldEditingChanged(sender: UITextField) {
-        if sender === loginView.emailItem.textField {
-            viewModel.formInformation.email = sender.text ?? ""
-        } else if sender === loginView.passwordItem.textField {
-            viewModel.formInformation.password = sender.text ?? ""
-        }
-    }
-
-    @objc private func rememberItemValueChanged(sender: CheckboxItemView) {
-        viewModel.formInformation.rememberEmail = sender.isSelected
-    }
-}
-
-// MARK: - LoginViewModelDelegate
-
-extension LoginViewController: LoginViewModelDelegate {
-    func isLoginButtonEnabledDidChange() {
-        loginView.loginButton.isEnabled = viewModel.isLoginButtonEnabled
     }
 }

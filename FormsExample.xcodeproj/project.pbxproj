@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		17C09DD3237EFE2D0009E9D0 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17C09DD2237EFE2D0009E9D0 /* RxSwift.framework */; };
+		17C09DD5237EFE360009E9D0 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17C09DD4237EFE360009E9D0 /* RxCocoa.framework */; };
+		17C09DD7237EFE460009E9D0 /* RxSwift.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 17C09DD2237EFE2D0009E9D0 /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		17C09DD8237EFE460009E9D0 /* RxCocoa.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 17C09DD4237EFE360009E9D0 /* RxCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		17C09DDA237F07B80009E9D0 /* RxRelay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17C09DD9237F07B80009E9D0 /* RxRelay.framework */; };
+		17C09DDB237F07C50009E9D0 /* RxRelay.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 17C09DD9237F07B80009E9D0 /* RxRelay.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F68378542375A7F400371B1A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68378532375A7F400371B1A /* AppDelegate.swift */; };
 		F68378562375A7F400371B1A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68378552375A7F400371B1A /* LoginViewController.swift */; };
 		F683785B2375A7F600371B1A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F683785A2375A7F600371B1A /* Assets.xcassets */; };
@@ -16,14 +22,33 @@
 		F68378B92375C00000371B1A /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68378B82375C00000371B1A /* RegisterViewController.swift */; };
 		F68378BB2375C01D00371B1A /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68378BA2375C01D00371B1A /* LoginView.swift */; };
 		F68378BD2375C11100371B1A /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68378BC2375C11100371B1A /* RegisterView.swift */; };
-		F68378BF2375C21600371B1A /* CheckboxItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68378BE2375C21600371B1A /* CheckboxItemView.swift */; };
+		F68378BF2375C21600371B1A /* CheckboxItemButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68378BE2375C21600371B1A /* CheckboxItemButton.swift */; };
 		F68378C52375CA4F00371B1A /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68378C42375CA4F00371B1A /* LoginViewModel.swift */; };
 		F68378C72375CCBB00371B1A /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68378C62375CCBB00371B1A /* UIImage+Extensions.swift */; };
 		F68378C92375D0C800371B1A /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68378C82375D0C800371B1A /* RootCoordinator.swift */; };
 		F68378CB2375D22E00371B1A /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68378CA2375D22E00371B1A /* RegisterViewModel.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		17C09DD6237EFE400009E9D0 /* Copy Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				17C09DDB237F07C50009E9D0 /* RxRelay.framework in Copy Frameworks */,
+				17C09DD7237EFE460009E9D0 /* RxSwift.framework in Copy Frameworks */,
+				17C09DD8237EFE460009E9D0 /* RxCocoa.framework in Copy Frameworks */,
+			);
+			name = "Copy Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		17C09DD2237EFE2D0009E9D0 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = SOURCE_ROOT; };
+		17C09DD4237EFE360009E9D0 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = SOURCE_ROOT; };
+		17C09DD9237F07B80009E9D0 /* RxRelay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRelay.framework; path = Carthage/Build/iOS/RxRelay.framework; sourceTree = SOURCE_ROOT; };
 		F68378502375A7F400371B1A /* FormsExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FormsExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F68378532375A7F400371B1A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F68378552375A7F400371B1A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -35,7 +60,7 @@
 		F68378B82375C00000371B1A /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		F68378BA2375C01D00371B1A /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		F68378BC2375C11100371B1A /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
-		F68378BE2375C21600371B1A /* CheckboxItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxItemView.swift; sourceTree = "<group>"; };
+		F68378BE2375C21600371B1A /* CheckboxItemButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxItemButton.swift; sourceTree = "<group>"; };
 		F68378C42375CA4F00371B1A /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		F68378C62375CCBB00371B1A /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
 		F68378C82375D0C800371B1A /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
@@ -47,17 +72,31 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17C09DD5237EFE360009E9D0 /* RxCocoa.framework in Frameworks */,
+				17C09DD3237EFE2D0009E9D0 /* RxSwift.framework in Frameworks */,
+				17C09DDA237F07B80009E9D0 /* RxRelay.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		17C09DD1237EFE090009E9D0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				17C09DD9237F07B80009E9D0 /* RxRelay.framework */,
+				17C09DD2237EFE2D0009E9D0 /* RxSwift.framework */,
+				17C09DD4237EFE360009E9D0 /* RxCocoa.framework */,
+			);
+			path = Frameworks;
+			sourceTree = "<group>";
+		};
 		F68378472375A7F400371B1A = {
 			isa = PBXGroup;
 			children = (
 				F68378522375A7F400371B1A /* FormsExample */,
 				F68378512375A7F400371B1A /* Products */,
+				17C09DD1237EFE090009E9D0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -85,7 +124,7 @@
 				F683785F2375A7F600371B1A /* Info.plist */,
 				F68378B42375ACCD00371B1A /* ScrollViewKeyboardHandler.swift */,
 				F68378B62375B23000371B1A /* FormItemView.swift */,
-				F68378BE2375C21600371B1A /* CheckboxItemView.swift */,
+				F68378BE2375C21600371B1A /* CheckboxItemButton.swift */,
 				F68378C62375CCBB00371B1A /* UIImage+Extensions.swift */,
 			);
 			path = FormsExample;
@@ -101,6 +140,7 @@
 				F683784C2375A7F400371B1A /* Sources */,
 				F683784D2375A7F400371B1A /* Frameworks */,
 				F683784E2375A7F400371B1A /* Resources */,
+				17C09DD6237EFE400009E9D0 /* Copy Frameworks */,
 			);
 			buildRules = (
 			);
@@ -163,7 +203,7 @@
 			files = (
 				F68378BB2375C01D00371B1A /* LoginView.swift in Sources */,
 				F68378B52375ACCD00371B1A /* ScrollViewKeyboardHandler.swift in Sources */,
-				F68378BF2375C21600371B1A /* CheckboxItemView.swift in Sources */,
+				F68378BF2375C21600371B1A /* CheckboxItemButton.swift in Sources */,
 				F68378B92375C00000371B1A /* RegisterViewController.swift in Sources */,
 				F68378C92375D0C800371B1A /* RootCoordinator.swift in Sources */,
 				F68378C72375CCBB00371B1A /* UIImage+Extensions.swift in Sources */,
@@ -312,6 +352,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 53X3PZ3S52;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = FormsExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -331,6 +375,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 53X3PZ3S52;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = FormsExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (

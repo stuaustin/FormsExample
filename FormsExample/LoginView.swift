@@ -80,8 +80,8 @@ final class LoginView: UIView {
         return passwordItem
     }()
 
-    let rememberItem: CheckboxItemView = {
-        let rememberItem = CheckboxItemView()
+    let rememberItem: CheckboxItemButton = {
+        let rememberItem = CheckboxItemButton()
         rememberItem.textLabel.text = "Remember my email address"
         return rememberItem
     }()
